@@ -21,4 +21,7 @@ const reducer =(state =10, action)=>{
 }
 
 const store = Redux.createStore(reducer);
+store.dispatch(action);   //11
+store.dispatch(action);   //12
+store.dispatch(action2);   //11
 console.log(`the state is ${store.getState()}`);
