@@ -112,7 +112,7 @@
 
     store.subscribe(()=>{
         console.log('Updated State', store.getState());
-        document.querySelector('#value').innerText = `Balence ${store.getState().bank}`;
+        document.querySelector('#value').innerText = `Balence:  ${store.getState().bank}`;
         amountInput.value = '';
     })
 
