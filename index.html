@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Bank.css">
     <title>Bank App with Redux</title>
 </head>
 <body>
+    <div class="form">
+        <h3 id="value"></h3>
+        <input type="number" placeholder="amount" id="amount" />
+        <div class="button-group">
+            <button id="deposit">Deposit </button>
+            <button id="withdraw">withdraw </button>
+        </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.1/redux.min.js"></script>
     <!-- redux thunk -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/redux-thunk/2.4.2/redux-thunk.min.js"></script>
