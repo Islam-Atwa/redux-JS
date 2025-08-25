@@ -90,15 +90,12 @@
 
     store.dispatch(fetchProducts());
 
-
- 
     store.dispatch(addProduct({id:1, title:'Product 1'}));  
-
 
 // UI logic
     const Balance = store.getState().bank;
     let amountInput = document.getElementById('amount');
-    
+
     document.querySelector('#value').innerText = `Balance: $${Balance}`;
 
     document.querySelector('#deposit').addEventListener('click',()=>{
@@ -106,13 +103,13 @@
     })
 
     document.querySelector('#withdraw').addEventListener('click',()=>{
-        store.dispatch(withdrawMoney(+amountInput.value)) - Balance;
+        store.dispatch(withdrawMoney(+amountInput.value));
     }) 
 
 
     store.subscribe(()=>{
         console.log('Updated State', store.getState());
-        document.querySelector('#value').innerText = `Balence:  ${store.getState().bank}`;
+        document.querySelector('#value').innerText = `Balence:  ${store.getState().bank} $`;
         amountInput.value = '';
     })
 
