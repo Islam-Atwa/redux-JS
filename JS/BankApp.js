@@ -91,11 +91,30 @@
     store.dispatch(fetchProducts());
 
 
-    store.subscribe(()=>{
-        console.log('Updated State', store.getState());
-    })
+ 
     store.dispatch(addProduct({id:1, title:'Product 1'}));  
 
+
+// UI logic
+    const Balance = store.getState().bank;
+    let amountInput = document.getElementById('amount');
+    
+    document.querySelector('#value').innerText = `Balance: $${Balance}`;
+
+    document.querySelector('#deposit').addEventListener('click',()=>{
+        store.dispatch(depositMoney(+amountInput.value));
+    })
+
+    document.querySelector('#withdraw').addEventListener('click',()=>{
+        store.dispatch(withdrawMoney(+amountInput.value)) - Balance;
+    }) 
+
+
+    store.subscribe(()=>{
+        console.log('Updated State', store.getState());
+        document.querySelector('#value').innerText = `Balence:  ${store.getState().bank}`;
+        amountInput.value = '';
+    })
 
     console.log(Redux);
     // print redux thunk
