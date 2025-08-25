@@ -12,24 +12,24 @@ A simple banking application that demonstrates basic account operations:
 ### 1. Deposit Money
 When the **Deposit** button is clicked, the entered amount is added to the account balance.
 
-![Deposit Feature](images/deposit.png)
+![Deposit Feature](JS/images/deposit.png)
 
 ---
 
 ### 2. Withdraw Money
 When the **Withdraw** button is clicked, the entered amount is deducted from the account balance.
 
-![Withdraw Feature](images/withdraw.png)
+![Withdraw Feature](JS/images/withdraw.png)
 
 ---
 
 ## Screenshots
 
 **Balance before transaction:**  
-![Balance Before](images/balance_before.png)
+![Balance Before](JS/images/balance_before.png)
 
 **After deposit:**  
-![Balance After Deposit](images/balance_after.png)
+![Balance After Deposit](JS/images/deposit.png)
 
 **After withdrawal:**  
-![Balance After Withdraw](images/balance_after.png)
+![Balance After Withdraw](JS/images/withdraw.png)
