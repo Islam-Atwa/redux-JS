@@ -9,6 +9,9 @@ A simple banking application that demonstrates basic account operations:
 
 ## Features
 
+**Balance before transaction:**  
+![Balance Before](JS/images/balance_before.png)
+
 ### 1. Deposit Money
 When the **Deposit** button is clicked, the entered amount is added to the account balance.
 
@@ -24,9 +27,6 @@ When the **Withdraw** button is clicked, the entered amount is deducted from the
 ---
 
 ## Screenshots
-
-**Balance before transaction:**  
-![Balance Before](JS/images/balance_before.png)
 
 **After deposit:**  
 ![Balance After Deposit](JS/images/deposit.png)
