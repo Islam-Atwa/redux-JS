@@ -1,30 +1,102 @@
+    //constans types
+    const DEPOSIT_MONEY = 'DEPOSIT_MONEY';
+    const WITHDRAW_MONEY = 'WITHDRAW_MONEY';
+    const ADD_PRODUCT = 'ADD_PRODUCT';
+    const GET_PRODUCTS = 'GET_PRODUCTS';
 
 
-// create action object
-const action = {
-    type: 'DEPOSIT_MONEY',
-}
-const action2 = {
-    type: 'WITHDRAW_MONEY',
-}
+//-------------------------------Action Creators-------------------------------//
 
-// create reducer function 
-const reducer = (state =0, action)=>{
-    switch(action.type){
-        case 'DesPOSIT_MONEY':
-            return state + 100;
+    // function to deposit money
+    const depositMoney = function(amount){
+        return {
+            type: DEPOSIT_MONEY,
+            payload: amount
+        }
+    }
 
-        case 'WITHDRAW_MONEY':
-            return state - 100;
+    // function to withdraw money
+    const withdrawMoney = function(amount){
+        return {
+            type:WITHDRAW_MONEY,
+            payload: amount
+        }
+    }
 
-        default:
-            return state;
-    }        
-}
+    // function to add product
+    const addProduct = function(product){
+        return {
+            type: ADD_PRODUCT,   
+            payload: product
+        }
+    }
 
-// create store
-const store = Redux.createStore(reducer); 
-console.log(store.getState());
+    // function to get products
+    const getProduct = (product)=>{
+        return {
+            type: GET_PRODUCTS,
+            payload:product
+        }
+    }   
+
+    // fetch products from api
+    const fetchProducts=()=>{
+        return async(dispatch)=>{
+            const res = await fetch('https://fakestoreapi.com/products');
+            const data = await res.json();
+            console.log(data);
+            dispatch(getProduct(data));
+        }
+    }
+//--------------------------------------------------------------//
+
+    // create reducer function 
+    const bankReducer = (state =100, action)=>{
+        switch(action.type){
+            case DEPOSIT_MONEY:
+                return state + action.payload;
+
+            case WITHDRAW_MONEY:
+                return state - action.payload;
+
+            default:
+                return state;
+        }        
+    }
+
+    const productsReducer = (state =[], action)=>{
+        switch(action.type){
+            case GET_PRODUCTS:
+                return [...action.payload, ...state]
+            case ADD_PRODUCT:
+                return [...state, action.payload];
+            default:
+                return state;
+        }        
+    }
+
+    // multiple reducers
+    const rootReducer = Redux.combineReducers({
+        bank: bankReducer,
+        products: productsReducer
+    })
+
+    // create centerlize store 
+    const store = Redux.createStore(rootReducer,Redux.applyMiddleware(ReduxThunk)); 
+
+    store.dispatch(depositMoney(100));  100   // dispatch: reducer داله ترسل اجراء الي 
+    store.dispatch(withdrawMoney(75));  50
+    console.log(store.getState());
+
+    store.dispatch(fetchProducts());
 
 
-console.log(Redux);
+    store.subscribe(()=>{
+        console.log('Updated State', store.getState());
+    })
+    store.dispatch(addProduct({id:1, title:'Product 1'}));  
+
+
+    console.log(Redux);
+    // print redux thunk
+    // console.log(ReduxThunk);
